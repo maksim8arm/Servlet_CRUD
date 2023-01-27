@@ -1,6 +1,8 @@
 package ru.netology.servlet;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
+import ru.netology.config.JavaConfig;
 import ru.netology.controller.PostController;
 import ru.netology.repository.PostRepository;
 import ru.netology.service.PostService;
@@ -10,13 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class MainServlet extends HttpServlet {
+
     private PostController controller;
 
     @Override
     public void init() {
 
-        final var context = new AnnotationConfigApplicationContext("ru.netology");
-        controller = (PostController) context.getBean("postController");
+        final var context = new AnnotationConfigApplicationContext(JavaConfig.class);
+        controller = context.getBean(PostController.class);
         final var service = context.getBean(PostService.class);
         final var isSame = service == context.getBean("postService");
     }

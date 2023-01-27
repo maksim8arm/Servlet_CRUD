@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 // Stub
-@Repository
+
 public class PostRepository {
 
     private final ConcurrentHashMap<Long, Post> allPosts = new ConcurrentHashMap<>();
